@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+<head>
+<title>Tool Time Home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="styles/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="scripts/slideshow.js"></script>
+</head>
+<body>
+<div class="navbar"> 
+	<div class="dropdown">
+    	<button class="dropbtn">Company Profile </button>
+    	<div class="dropdown-content"> 
+			<a href="#">About Us</a> 
+			<a href="#">Contact Us</a> 
+		</div>
+  	</div>
+	<div class="dropdown">
+    	<button class="dropbtn">Departments </button>
+    	<div class="dropdown-content"> 
+			<a href="#">Hardware</a> 
+			<a href="#">Paint</a> 
+			<a href="#">Plumbing</a>
+			<a href="#">Electrical</a>
+			<a href="#">Tools</a>
+		</div>
+	</div>
+  	<div class="dropdown">
+    	<button class="dropbtn">Shopping </button>
+    	<div class="dropdown-content"> 
+			<a href="#">Order History</a> 
+			<a href="#">Shopping Cart</a> 
+			<a href="#">Policy</a> 
+		</div>
+  	</div>
+	<div class="dropdown">
+    	<button class="dropbtn">Account </button>
+    	<div class="dropdown-content"> 
+			<a href="#">Registration</a> 
+			<a href="#">Profile</a> 
+  		</div>
+	</div>
+	<div class="dropdown">
+  		<button class="dropbtn">Contact Us  </button>
+  		<div class="dropdown-content"> 
+			<a href="#">Store Location</a> 
+			<a href="#">FAQ</a> 
+			<a href="#">Claim Center</a> 
+		</div>
+	</div>
+</div>
+	
+	<div >
+		<img class="slides" src="images/hardware1.jpg" alt="Hardware Image"/>
+		<img class="slides" src="images/electrical.jpg" alt="Electrical" />
+		<img class="slides" src="images/renovated_bathroom.JPG" alt="Bathroom" />
+		<img class="imageRight" src="images/Tool_Time.jpg" alt="Tool Time"/>
+	</div>
+	<div class="copyRight">
+		&copy; Tool Time, Inc. 742 Evergreen Terrace, Springfield, Oregon 97403
+	</div>
+	<script>
+	var myIndex = 0;
+	carousel();
+
+	function carousel() {
+		var i;
+		var x = document.getElementsByClassName("slides");
+		for (i = 0; i < x.length; i++) {
+		   x[i].style.display = "none";  
+		}
+		myIndex++;
+		if (myIndex > x.length) {myIndex = 1;}    
+		x[myIndex-1].style.display = "block";  
+		setTimeout(carousel, 5000); // Change image every 2 seconds
+	}
+	</script>
+</body>
+</html>
