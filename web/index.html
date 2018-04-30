@@ -24,11 +24,11 @@ and open the template in the editor.
 	<div class="dropdown">
     	<button class="dropbtn">Departments </button>
     	<div class="dropdown-content"> 
-			<a href="#">Hardware</a> 
-			<a href="#">Paint</a> 
-			<a href="#">Plumbing</a>
-			<a href="#">Electrical</a>
-			<a href="#">Tools</a>
+                        <a href="http://localhost:8080/ToolTime/DepartmentsServlet?department=electrical">Electrical</a>
+			<a href="http://localhost:8080/ToolTime/DepartmentsServlet?department=hardware">Hardware</a> 
+			<a href="http://localhost:8080/ToolTime/DepartmentsServlet?department=paint">Paint</a> 
+			<a href="http://localhost:8080/ToolTime/DepartmentsServlet?department=plumbing">Plumbing</a>
+			<a href="http://localhost:8080/ToolTime/DepartmentsServlet?department=tools">Tools</a>
 		</div>
 	</div>
   	<div class="dropdown">
@@ -56,15 +56,22 @@ and open the template in the editor.
 	</div>
 </div>
 	
-	<div >
+	<div>
 		<img class="slides" src="images/hardware1.jpg" alt="Hardware Image"/>
 		<img class="slides" src="images/electrical.jpg" alt="Electrical" />
 		<img class="slides" src="images/renovated_bathroom.JPG" alt="Bathroom" />
 		<img class="imageRight" src="images/Tool_Time.jpg" alt="Tool Time"/>
 	</div>
-	<div class="copyRight">
-		&copy; Tool Time, Inc. 742 Evergreen Terrace, Springfield, Oregon 97403
-	</div>
+	<footer>
+		<div class="copyRight">
+	
+			&copy;
+			<script type="text/JavaScript">
+				document.write(new Date().getFullYear());
+			</script>
+			Tool Time, Inc. 742 Evergreen Terrace, Springfield, Oregon 97403
+		</div>
+	</footer>
 	<script>
 	var myIndex = 0;
 	carousel();
