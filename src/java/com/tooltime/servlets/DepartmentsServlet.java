@@ -23,7 +23,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author MikeWilkinson
  */
-@WebServlet(name = "DepartmentsServlet", urlPatterns = {"/DepartmentsServlet"})
+@WebServlet(name = "DepartmentsServlet", urlPatterns = {"/shopDepartment"})
 public class DepartmentsServlet extends HttpServlet {
 
     
@@ -44,7 +44,7 @@ public class DepartmentsServlet extends HttpServlet {
         String department = request.getParameter("department");
         String createCategoryPage = request.getParameter("categoryPage");
         String category = request.getParameter("category");
-        String url = "/department.jsp";
+        String url = "/web/department.jsp";
         List<Product> products = null;
         List<Category> departmentCategories = null;
         List<String> categories = null;
@@ -52,19 +52,19 @@ public class DepartmentsServlet extends HttpServlet {
         
         switch (department){
             case "electrical":
-                imagePaths = servletContext.getResourcePaths("/departments/electrical_images");
+                imagePaths = servletContext.getResourcePaths("/web/departments/electrical_images");
                 break;
             case "hardware":
-                imagePaths = servletContext.getResourcePaths("/departments/hardware_images");
+                imagePaths = servletContext.getResourcePaths("/web/departments/hardware_images");
                 break;
             case "paint":
-                imagePaths = servletContext.getResourcePaths("/departments/paint_images");
+                imagePaths = servletContext.getResourcePaths("/web/departments/paint_images");
                 break;
             case "plumbing":
-                imagePaths = servletContext.getResourcePaths("/departments/plumbing_images");
+                imagePaths = servletContext.getResourcePaths("/web/departments/plumbing_images");
                 break;
             case "tools" :
-                imagePaths = servletContext.getResourcePaths("/departments/tools_images");
+                imagePaths = servletContext.getResourcePaths("/web/departments/tools_images");
                 break;      
         }
 
@@ -72,7 +72,7 @@ public class DepartmentsServlet extends HttpServlet {
         categories = DepartmentUtil.getCategories(products);
         if (createCategoryPage != null){
             departmentCategories = DepartmentUtil.getDepartmentCategories(products);
-            url = "/department_category.jsp";
+            url = "/web/department_category.jsp";
             request.setAttribute("categories", departmentCategories);
         }
         else{
@@ -80,7 +80,7 @@ public class DepartmentsServlet extends HttpServlet {
         }
         if (category != null){
             products = DepartmentUtil.filterProductsByCategory(products, category);
-            url = "/shopByCategory.jsp";
+            url = "/web/shopByCategory.jsp";
             request.setAttribute("category", category);
         }
         

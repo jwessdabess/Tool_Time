@@ -5,15 +5,15 @@
 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<%--<c:import url="/web/includes/header.html" /> --%>
+<c:import url="/web/includes/header.html" /> 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>${department} Department</title>
-        <link href="styles/departments.css" rel="stylesheet" type="text/css">
-        <script type="text/javascript" src="scripts/filterSelection.js"></script> 
+        <link href="web/styles/departments.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="web/scripts/filterSelection.js"></script> 
     </head>
     <body onload="filterSelection('all')">
         <div class="main">
