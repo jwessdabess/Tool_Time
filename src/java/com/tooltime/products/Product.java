@@ -13,10 +13,10 @@ import java.io.Serializable;
  */
 public class Product implements Serializable{
     
-    private int PLU;
+    private int SKU;
     private String name;
     private String description;
-    private double cost;
+    private String cost;
     private String dimensions;
     private String department;
     private String category;
@@ -27,17 +27,17 @@ public class Product implements Serializable{
     }
 
     /**
-     * @return the PLU
+     * @return the SKU
      */
-    public int getPLU() {
-        return PLU;
+    public int getSKU() {
+        return SKU;
     }
 
     /**
-     * @param PLU the PLU to set
+     * @param SKU the SKU to set
      */
-    public void setPLU(int PLU) {
-        this.PLU = PLU;
+    public void setSKU(int SKU) {
+        this.SKU = SKU;
     }
 
     /**
@@ -71,14 +71,14 @@ public class Product implements Serializable{
     /**
      * @return the cost
      */
-    public double getCost() {
+    public String getCost() {
         return cost;
     }
 
     /**
      * @param cost the cost to set
      */
-    public void setCost(double cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 

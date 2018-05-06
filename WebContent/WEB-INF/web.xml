@@ -9,7 +9,7 @@
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>/faces/*</url-pattern>
-  </servlet-mapping> 
+  </servlet-mapping>
   <servlet>
   	<servlet-name>DepartmentsServlet</servlet-name>
   	<servlet-class>com.tooltime.servlets.DepartmentsServlet</servlet-class>
@@ -17,6 +17,10 @@
   <servlet-mapping>
   	<servlet-name>DepartmentsServlet</servlet-name>
   	<url-pattern>/shopDepartment/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DepartmentsServlet</servlet-name>
+  	<url-pattern>/web/shopDepartment/*</url-pattern>
   </servlet-mapping>
   
   <context-param>

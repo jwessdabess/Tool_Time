@@ -9,10 +9,11 @@ import com.tooltime.products.Category;
 import com.tooltime.products.Product;
 import com.tooltime.util.DepartmentUtil;
 import java.io.IOException;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Set;
-import javax.servlet.ServletContext;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,7 +29,12 @@ public class DepartmentsServlet extends HttpServlet {
 
     
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -40,7 +46,6 @@ public class DepartmentsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ServletContext servletContext = getServletContext();
         String department = request.getParameter("department");
         String createCategoryPage = request.getParameter("categoryPage");
         String category = request.getParameter("category");
@@ -48,28 +53,17 @@ public class DepartmentsServlet extends HttpServlet {
         List<Product> products = null;
         List<Category> departmentCategories = null;
         List<String> categories = null;
-        Set<String> imagePaths  = null;
         
-        switch (department){
-            case "electrical":
-                imagePaths = servletContext.getResourcePaths("/web/departments/electrical_images");
-                break;
-            case "hardware":
-                imagePaths = servletContext.getResourcePaths("/web/departments/hardware_images");
-                break;
-            case "paint":
-                imagePaths = servletContext.getResourcePaths("/web/departments/paint_images");
-                break;
-            case "plumbing":
-                imagePaths = servletContext.getResourcePaths("/web/departments/plumbing_images");
-                break;
-            case "tools" :
-                imagePaths = servletContext.getResourcePaths("/web/departments/tools_images");
-                break;      
-        }
-
-        products = DepartmentUtil.getProducts(department,imagePaths);
-        categories = DepartmentUtil.getCategories(products);
+        try {
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            String dbUrl = "jdbc:mysql://sql9.freemysqlhosting.net:3306/sql9235659";
+            String dbUserName = "sql9235659";
+            String dbPassWord = "cBYz7nz3Rw";
+            Connection connection = DriverManager.getConnection(dbUrl, dbUserName, dbPassWord);
+        
+            products = DepartmentUtil.getProducts(connection,department);
+            categories = DepartmentUtil.getCategories(products);
         if (createCategoryPage != null){
             departmentCategories = DepartmentUtil.getDepartmentCategories(products);
             url = "/web/department_category.jsp";
@@ -84,10 +78,11 @@ public class DepartmentsServlet extends HttpServlet {
             request.setAttribute("category", category);
         }
         
-        //department = department.substring(0, 1).toUpperCase() + department.substring(1);
         request.setAttribute("products", products);
         request.setAttribute("department", department);
-        
+        } catch (SQLException | ClassNotFoundException e) {
+        	e.printStackTrace();
+		}
         getServletContext().getRequestDispatcher(url).forward(request, response);
 
     }
