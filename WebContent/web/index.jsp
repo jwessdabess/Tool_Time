@@ -1,8 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:import url="/web/includes/header.html" />
-
+<%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+    <%@ include file = "includes/header.jsp" %>
+    <title>Tool Time Home</title>
+    <script type="text/javascript" src="scripts/slideshow.js"></script>
+    </head>
+    <body>
+    <%@include file = "includes/navbar.jsp" %>
 	<div>
 		<img class="slides" src="images/hardware1.jpg" alt="Hardware Image"/>
 		<img class="slides" src="images/electrical.jpg" alt="Electrical" />
@@ -28,5 +35,5 @@
 		setTimeout(carousel, 5000); // Change image every 2 seconds
 	}
 	</script>
-
+</body>
 </html>

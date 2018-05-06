@@ -7,9 +7,16 @@ package com.tooltime.util;
 
 import com.tooltime.products.Category;
 import com.tooltime.products.Product;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import javax.servlet.ServletContext;
 
 
 /**
@@ -18,26 +25,20 @@ import java.util.Set;
  */
 public class DepartmentUtil {
     
-    public static List<Product> getProducts(String department,Set<String> imagePaths){
+    public static List<Product> getProducts(Connection connection, String department) throws SQLException{
+    	
+    	String queryProductsForDepartment = "SELECT * FROM PRODUCT "
+                + "WHERE DEPARTMENT = ?";
+    	PreparedStatement productsForDepartmentStatement = connection.prepareStatement(queryProductsForDepartment);
+    	productsForDepartmentStatement.setString(1,department);
+        ResultSet productsForDepartmentResult = productsForDepartmentStatement.executeQuery();
+        
         List<Product> theProducts = new ArrayList<>();
-        int PLUCount = 1234567;
-        for (String imagePath : imagePaths) {
-            if (imagePath.contains(".jpg")) {
-                Product nextProduct = new Product();
-                nextProduct.setImage(imagePath.replaceFirst("/", ""));
-                nextProduct.setCost(0);
-                nextProduct.setDepartment(department);
-                nextProduct.setDescription("A dummy description for this " + department  + "product");
-                nextProduct.setDimensions("1 x 1");
-                String[] splitString = imagePath.split("[\\/\\.]");
-                nextProduct.setName(splitString[splitString.length-2]);
-                nextProduct.setPLU(PLUCount);
-                nextProduct.setCategory(nextProduct.getName().replaceAll("\\d", ""));
-                PLUCount++;
-                theProducts.add(nextProduct);
-            }
+        
+        while(productsForDepartmentResult.next()) {
+        	String imageName = productsForDepartmentResult.getString("IMAGE_NAME");
+        	theProducts.add(DepartmentUtil.findProductFromImageName(connection,department,imageName));
         }
-
         return theProducts;
     }
     
@@ -79,6 +80,33 @@ public class DepartmentUtil {
             filteredProducts.add(theProduct);
         });
         return filteredProducts;
+    }
+    
+    private static Product findProductFromImageName(Connection connection,String department,String imageName) throws SQLException {
+    	
+    	String queryProducts = "SELECT * FROM PRODUCT "
+                + "WHERE DEPARTMENT = ?"
+    			+ "AND IMAGE_NAME = ?";
+    	PreparedStatement productsFromImageStatement = connection.prepareStatement(queryProducts);
+    	productsFromImageStatement.setString(1,department);
+    	productsFromImageStatement.setString(2, imageName);
+        ResultSet resultSet = productsFromImageStatement.executeQuery();
+        
+        Product nextProduct = new Product();
+    	while (resultSet.next()){
+    	
+    		
+        nextProduct.setImage("departments/" + resultSet.getString("DEPARTMENT").toLowerCase() + "_images/" + resultSet.getString("IMAGE_NAME"));
+        nextProduct.setCost(resultSet.getString("COST"));
+        nextProduct.setDepartment(resultSet.getString("DEPARTMENT"));
+        nextProduct.setDescription(resultSet.getString("DESCRIPTION"));
+        nextProduct.setDimensions(resultSet.getString("LENGTH") + "x" + resultSet.getString("HEIGHT") + 
+        		"x" + resultSet.getString("WIDTH") + " " + resultSet.getString("UNITS"));
+        nextProduct.setName(resultSet.getString("NAME"));
+        nextProduct.setSKU(Integer.parseInt(resultSet.getString("SKU")));
+        nextProduct.setCategory(resultSet.getString("CATEGORY").trim());
+    	}
+        return nextProduct;
     }
     
 }
