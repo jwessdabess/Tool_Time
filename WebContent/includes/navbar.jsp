@@ -2,7 +2,7 @@
 			<div class="dropdown">
 		    	<button class="dropbtn">Company Profile </button>
 		    	<div class="dropdown-content"> 
-					<a href="#">About Us</a> 
+					<a href="/Tool_Time/aboutUs.jsp">About Us</a> 
 					<a href="#">Contact Us</a> 
 				</div>
 		  	</div>
@@ -27,8 +27,9 @@
 			<div class="dropdown">
 		    	<button class="dropbtn">Account </button>
 		    	<div class="dropdown-content"> 
-					<a href="#">Registration</a> 
-					<a href="#">Profile</a> 
+					<a href="/Tool_Time/login.jsp">Login</a>
+					<a href="/Tool_Time/register.jsp">Registration</a> 
+					<a href="ProfileServlet">Profile</a> 
 		  		</div>
 			</div>
 			<div class="dropdown">

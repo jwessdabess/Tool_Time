@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.tooltime.util;
+package database;
 
-import com.tooltime.products.Category;
-import com.tooltime.products.Product;
+import database.Category;
+import database.Product;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
