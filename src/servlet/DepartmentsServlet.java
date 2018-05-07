@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.tooltime.servlets;
+package servlet;
 
-import com.tooltime.products.Category;
-import com.tooltime.products.Product;
-import com.tooltime.util.DepartmentUtil;
+import database.Category;
+import database.Product;
+import database.DepartmentUtil;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -49,7 +49,7 @@ public class DepartmentsServlet extends HttpServlet {
         String department = request.getParameter("department");
         String createCategoryPage = request.getParameter("categoryPage");
         String category = request.getParameter("category");
-        String url = "/web/department.jsp";
+        String url = "/department.jsp";
         List<Product> products = null;
         List<Category> departmentCategories = null;
         List<String> categories = null;
@@ -66,7 +66,7 @@ public class DepartmentsServlet extends HttpServlet {
             categories = DepartmentUtil.getCategories(products);
         if (createCategoryPage != null){
             departmentCategories = DepartmentUtil.getDepartmentCategories(products);
-            url = "/web/department_category.jsp";
+            url = "/department_category.jsp";
             request.setAttribute("categories", departmentCategories);
         }
         else{
@@ -74,7 +74,7 @@ public class DepartmentsServlet extends HttpServlet {
         }
         if (category != null){
             products = DepartmentUtil.filterProductsByCategory(products, category);
-            url = "/web/shopByCategory.jsp";
+            url = "/shopByCategory.jsp";
             request.setAttribute("category", category);
         }
         

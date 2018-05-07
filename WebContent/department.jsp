@@ -31,7 +31,7 @@
                             <img src= ${product.imagePath} style="width:100%"/>  
                             <h3>${product.name}</h3>
                             <h4>Cost: <fmt:formatNumber value = "${product.cost}" type = "currency"/> </h4>
-                            <input class ="button" type= "submit" class="button" name="addToCart_${product.SKU}" value="Add To Cart" />
+                            <input class ="button" type= "submit" class="button" name="addToCart ${productCount}" value="Add To Cart" />
                         </div>
                         </div>
                 </c:forEach>
