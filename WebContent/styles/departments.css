@@ -55,6 +55,10 @@ h1 {
     padding: 10px;
 }
 
+.name_block{
+	min-height: 150px
+}
+
 /* The "show" class is added to the filtered elements */
 .show {
     display: block;
