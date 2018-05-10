@@ -82,6 +82,15 @@ public class DepartmentUtil {
         return filteredProducts;
     }
     
+    public static Product getProductBySKU(Connection connection, String SKU) throws SQLException {
+    	String queryProducts = "SELECT * FROM PRODUCT "
+                + "WHERE SKU = ?";
+    	PreparedStatement productsStatement = connection.prepareStatement(queryProducts);
+    	productsStatement.setString(1,SKU);
+        
+        return DepartmentUtil.createProductFromQuery(productsStatement); 
+    }
+    
     private static Product findProductFromImageName(Connection connection,String department,String imageName) throws SQLException {
     	
     	String queryProducts = "SELECT * FROM PRODUCT "
@@ -90,23 +99,25 @@ public class DepartmentUtil {
     	PreparedStatement productsFromImageStatement = connection.prepareStatement(queryProducts);
     	productsFromImageStatement.setString(1,department);
     	productsFromImageStatement.setString(2, imageName);
-        ResultSet resultSet = productsFromImageStatement.executeQuery();
         
-        Product nextProduct = new Product();
+        return DepartmentUtil.createProductFromQuery(productsFromImageStatement);
+    }
+    
+    private static Product createProductFromQuery(PreparedStatement queryStatement) throws SQLException {
+    	ResultSet resultSet = queryStatement.executeQuery();
+        
+        Product theProduct = new Product();
     	while (resultSet.next()){
-    	
-    		
-        nextProduct.setImage("departments/" + resultSet.getString("DEPARTMENT").toLowerCase() + "_images/" + resultSet.getString("IMAGE_NAME"));
-        nextProduct.setCost(resultSet.getString("COST"));
-        nextProduct.setDepartment(resultSet.getString("DEPARTMENT"));
-        nextProduct.setDescription(resultSet.getString("DESCRIPTION"));
-        nextProduct.setDimensions(resultSet.getString("LENGTH") + "x" + resultSet.getString("HEIGHT") + 
-        		"x" + resultSet.getString("WIDTH") + " " + resultSet.getString("UNITS"));
-        nextProduct.setName(resultSet.getString("NAME"));
-        nextProduct.setSKU(Integer.parseInt(resultSet.getString("SKU")));
-        nextProduct.setCategory(resultSet.getString("CATEGORY").trim());
+    		theProduct.setImage("departments/" + resultSet.getString("DEPARTMENT").toLowerCase() + "_images/" + resultSet.getString("IMAGE_NAME"));
+    		theProduct.setCost(resultSet.getString("COST"));
+    		theProduct.setDepartment(resultSet.getString("DEPARTMENT"));
+    		theProduct.setDescription(resultSet.getString("DESCRIPTION"));
+    		theProduct.setDimensions(resultSet.getString("DIMENSIONS"));
+    		theProduct.setName(resultSet.getString("NAME"));
+    		theProduct.setSKU(Integer.parseInt(resultSet.getString("SKU")));
+    		theProduct.setCategory(resultSet.getString("CATEGORY").trim());
     	}
-        return nextProduct;
+    	return theProduct;
     }
     
 }

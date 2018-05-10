@@ -57,9 +57,9 @@ public class DepartmentsServlet extends HttpServlet {
         try {
             
             Class.forName("com.mysql.jdbc.Driver");
-            String dbUrl = "jdbc:mysql://sql9.freemysqlhosting.net:3306/sql9235659";
-            String dbUserName = "sql9235659";
-            String dbPassWord = "cBYz7nz3Rw";
+            String dbUrl = "jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3230335";
+            String dbUserName = "sql3230335";
+            String dbPassWord = "gvitcsZz4d";
             Connection connection = DriverManager.getConnection(dbUrl, dbUserName, dbPassWord);
         
             products = DepartmentUtil.getProducts(connection,department);
