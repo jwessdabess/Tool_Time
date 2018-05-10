@@ -16,14 +16,6 @@
 					<a href="shopDepartment?department=Tools">Tools</a>
 				</div>
 			</div>
-		  	<div class="dropdown">
-		    	<button class="dropbtn">Shopping </button>
-		    	<div class="dropdown-content"> 
-					<a href="#">Order History</a> 
-					<a href="#">Shopping Cart</a> 
-					<a href="#">Policy</a> 
-				</div>
-		  	</div>
 			<div class="dropdown">
 		    	<button class="dropbtn">Account </button>
 		    	<div class="dropdown-content"> 
@@ -41,6 +33,12 @@
 				</div>
 			</div>
 			<div align="right">
-			<i class="material-icons" style="font-size:48px;color:cadetblue">shopping_cart</i> 0 items
+			  <a href="CartServlet?viewCart=true"><i class="material-icons" style="font-size:48px;color:cadetblue">shopping_cart</i> </a>
+			<c:if test="${empty numItems}">
+			  0 items
+			</c:if>
+			<c:if test="${not empty numItems}">
+			${numItems} items
+			</c:if>
 			</div>
 		</div>

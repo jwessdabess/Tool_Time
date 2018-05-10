@@ -28,12 +28,16 @@
                 <c:forEach items="${products}" var="product">
                         <div class="column ${product.category}">                     
                         <div class="content">
+                        	
                             <img src= ${product.imagePath} style="width:100%"/> 
                             <div class="name_block">
                             <h3>${product.name}</h3>
                             </div> 
                             <h4>Cost: <fmt:formatNumber value = "${product.cost}" type = "currency"/> </h4>
+                            <form action="CartServlet" method="post">
+                            <input type="hidden" name="SKU" value="${product.SKU}">
                             <input class ="button" type= "submit" class="button" name="addToCart_${product.SKU}" value="Add To Cart" />
+                            </form>
                         </div>
                         </div>
                 </c:forEach>
