@@ -7,10 +7,15 @@
 <%@include file = "includes/navbar.jsp" %>
 <br><h1>Member Sign In</h1><br>
 
+<%	boolean logged = (boolean) session.getAttribute("logged");
+	if (!logged)
+		out.print("<h3> " + "You are not logged in. Please log in to view profile" +
+			"</h3>");%>
+
 <body>
     <head>
     <%@ include file = "includes/header.jsp" %>
-    <title>Tool Time Account</title>
+    <title>Tool Time Login</title>
     <script type="text/javascript" src="scripts/slideshow.js"></script>
     </head>
 <form action="MembershipServlet" method="post">
@@ -18,9 +23,9 @@
 		Email
 		<input type="text" name="email" autofocus> 
 		<br>
-		Password<br>
-		<input type="password" name="password" size="55">
-		<br><br>
+		Password
+		<input type="password" name="password">
+		<br>
 		<input type="hidden" name="action" value="login"> 
 		<input type="submit" value="Login">
 		</fieldset>
