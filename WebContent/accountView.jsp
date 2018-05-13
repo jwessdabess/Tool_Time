@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@page import="user.*"
 	import="java.lang.*, java.text.*, java.util.*" %>
-<c:import url="/includes/header.html" />
+<c:import url="includes/navbar.jsp" />
 <link rel="stylesheet" href="styles/login.css" type="text/css" />
 <script type="text/javascript" src="scripts/register.js"></script>
 <br><h1>My Account</h1><br>
@@ -13,11 +13,16 @@
 %>
 
 <body>
+    <head>
+    <%@ include file = "includes/header.jsp" %>
+    <title>Tool Time Login</title>
+    <script type="text/javascript" src="scripts/slideshow.js"></script>
+    </head>
 	<fieldset>
 		<label for="firstName">First name:</label>
 			<input name="lastName" id="lastName" value=<%out.print(user.getFirstName());%> readonly type="text">
 		<label for="lastName">Last name:</label>
-			<input name="lastName" id="lastName" value=<%out.print(user.getLastName());%>readonly type="text">
+			<input name="lastName" id="lastName" value=<%out.print(user.getLastName());%> readonly type="text">
 		<label for="email">Email Address:</label>
 			<input name="email" id="email" value=<%out.print(user.getEmail());%> readonly type="text">
 	</fieldset>

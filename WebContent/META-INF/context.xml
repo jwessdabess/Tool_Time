@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+  <Realm className="org.apache.catalina.realm.JDBCRealm" 
+         connectionName="sql3230335" connectionPassword="gvitcsZz4d" 
+         connectionURL="jdbc:mysql://sql9.freemysqlhosting.net:3306/sql3230335" 
+         debug="99" driverName="com.mysql.jdbc.Driver" 
+         roleNameCol="Rolename" userCredCol="Password" userNameCol="Username" 
+         userRoleTable="UserRole" userTable="UserPass"/>
+</Context>

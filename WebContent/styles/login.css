@@ -21,6 +21,15 @@ h2 {
 	padding-bottom: 13px;
 }
 
+h3 {     
+    font-size: 75%;
+    color: red;
+	margin:auto;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 13px;
+}
+
 p
 {
     color: black;
