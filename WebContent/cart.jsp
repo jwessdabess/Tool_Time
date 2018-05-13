@@ -7,44 +7,51 @@
        	<%@ include file = "includes/header.jsp" %>
 		<title>Cart</title>
         <link href="styles/departments.css" rel="stylesheet" type="text/css">
-        <script type="text/javascript" src="scripts/filterSelection.js"></script> 
     </head>
 <body>
 		<%@include file = "includes/navbar.jsp" %>
-		<b>Cart for ${user.firstName} ${user.lastName}</b>
 		<br />
 		<br />
 		<table >
             <thead>
                 <tr>
                     <th>
-                        <b> Your Items</b> 
+                        <b> Shopping Cart</b> 
                     </th>
-                    <th></th>
                     <th>
                         <b>Cost</b>
                     </th>
-                    <th></th>
                 </tr>
             </thead>
         	<tbody>
-			<c:forEach items="${cart.CartItems}" var="cartItem">
+			<c:forEach items="${cartItems}" var="cartItem">
 				<tr>
-					<td></td>
-					<td align="right">
+					<td style ="text-align: left;">
+					<form action="CartServlet" method="post">
+					<img src= ${cartItem.imagePath} style="width:15%"/>
+					<h3>${cartItem.name} </h3>
+					<br/>
+					<input type="hidden" name="SKU" value="${cartItem.SKU}">
+					<input type="hidden" name="viewCart" value="true">
+					<input type="submit" class="deleteButton" name= "removeFromCart" value = "Remove"/>
+					</form>
+					</td>
+					<td style ="text-align: right;">
                     <fmt:formatNumber value = "${cartItem.cost}" 
                     					type = "currency"/>
                     </td>
 				</tr>
+				
 			</c:forEach>
 			<tr >
-             <td></td>
-             <td align="right">
-             <b>Total</b> <fmt:formatNumber value = "${totalCost}" 
+             <td style ="text-align: right;"><h2>Total</h2></td>
+             <td style ="text-align: right;">
+             <fmt:formatNumber value = "${totalCost}" 
                                               type = "currency"/>
                </td>
             </tr> 
 			</tbody>
 		</table>
+		<input type="submit" class="button" name= "checkout" value = "Proceed to Checkout"/>
 </body>
 </html>

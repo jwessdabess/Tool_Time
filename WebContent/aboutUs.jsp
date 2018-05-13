@@ -1,12 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:import url="/includes/header.html" />
 <link rel="stylesheet" href="styles/aboutUs.css" type="text/css" />
 <script type="text/javascript" src="scripts/register.js"></script>
+<html>
+    <head>
+    <%@ include file = "includes/header.jsp" %>
+    <title>About Us</title>
+	</head>
+<body>
+<%@include file = "includes/navbar.jsp" %>
 <br><h1>About Us</h1><br>
 
-<body>
 <img src="/Tool_Time/images/tool.jpg" ALIGN="left" width="350" height="250">
 <p>
 	Thanks for visiting us online. If you have a moment, we'd like to tell you a bit about Tool Time.

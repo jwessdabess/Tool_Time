@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:import url="/includes/header.html" />
 <link rel="stylesheet" href="styles/login.css" type="text/css" />
+<script type="text/javascript" src="scripts/register.js"></script>
+<html>
+    <head>
+    <%@ include file = "includes/header.jsp" %>
+    <title>Login</title>
+	</head>
+<body>
+<%@include file = "includes/navbar.jsp" %>
 <br><h1>Member Sign In</h1><br>
 
 <body>

@@ -44,19 +44,30 @@ public class CartServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/index.jsp";
+		String url = "/cart.jsp";
 		//session object
         HttpSession session = request.getSession();
-		User user = (User) session.getAttribute("results");
+		//User user = (User) session.getAttribute("results");
+		
+        //TEMPORARY USER
+		User user = new User();
+		user.setFirstName("Mike");
+		user.setLastName("Wilkinson");
+		user.setEmail("ltmikewilkinson@gmail.com");
+		session.setAttribute("user", user);
+		
 		Cart cart = (Cart) session.getAttribute("cart");
 		String productSKU = request.getParameter("SKU");
 		String viewCart = request.getParameter("viewCart");
 		String addToCart = request.getParameter("addToCart");
 		String removeFromCart = request.getParameter("removeFromCart");
 		int numItems;
+		
+		
 		if (user == null) {
 			url = "/login.jsp";
 		}else {
+			
 			try {
 	            
 				Class.forName("com.mysql.jdbc.Driver");
@@ -81,12 +92,11 @@ public class CartServlet extends HttpServlet {
 				numItems = cart.getCartItems().size();
 				double totalCost = CartUtil.getCartTotal(cart);
 				session.setAttribute("cart", cart);
+				session.setAttribute("cartItems",cart.getCartItems());
 				session.setAttribute("numItems",numItems);
 				session.setAttribute("totalCost", totalCost);
 			}
-			if (viewCart != null){
-				url = "/cart.jsp";
-			}
+			
 		getServletContext().getRequestDispatcher(url).forward(request, response);
 	}
 
