@@ -15,4 +15,5 @@
               value="create"/>
   </properties>
  </persistence-unit>
+
 </persistence>

@@ -10,7 +10,6 @@
 	</head>
 <body>
 <%@include file = "includes/navbar.jsp" %>
-<br><h1>About Us</h1><br>
 
 <img src="/Tool_Time/images/tool.jpg" ALIGN="left" width="350" height="250">
 <p>
@@ -37,7 +36,7 @@
 <img src="/Tool_Time/images/red_cross.jpg" ALIGN="left" width="350" height="250">
 <p>
 	At Tool Time, we pride ourselves on being the helpful place. We believe in giving back to the communities we do business 
-	in and helping those in need. Since 1991, Ace has been a proud partner of the American Red Cross. Through our stores, 
+	in and helping those in need. Since 1991, Tool Time has been a proud partner of the American Red Cross. Through our stores, 
 	collaborating with vendor partners and employee giving, we have raised over $100 million for the American Red Cross through 
 	product donation when a disaster strikes.
 </p>

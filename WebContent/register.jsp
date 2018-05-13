@@ -1,9 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:import url="/includes/header.html" />
+<c:import url="/includes/navbar.jsp" />
 <link rel="stylesheet" href="styles/login.css" type="text/css" />
 <script type="text/javascript" src="scripts/register.js"></script>
+
+    <head>
+    <%@ include file = "includes/header.jsp" %>
+    <title>Tool Time Register</title>
+    <script type="text/javascript" src="scripts/slideshow.js"></script>
+    </head>
 <br><h1>Register an Account</h1><br>
 
 <body>
@@ -16,9 +22,9 @@
 		<label for="email">Email Address:</label>
 			<input name="email" id="email" required type="text">
 		<label for="txtPassword">Password</label>
-			<input name="Password" id="txtPassword" type="password"><br><br>
+			<input name="Password" id="txtPassword" type="password" size="55" required><br><br>
 		<label for="txtConfirmPassword">Password (verify)</label>
-		<input name="ConfirmPassword" id="txtConfirmPassword" type="password">
+		<input name="ConfirmPassword" id="txtConfirmPassword" type="password" required>
 	</fieldset>
     <fieldset id="billing" class="text">
 	 	<legend>Billing Address</legend>
