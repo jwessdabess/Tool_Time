@@ -52,6 +52,9 @@
             </tr> 
 			</tbody>
 		</table>
+		<form action="CartServlet" method="post">
 		<input type="submit" class="button" name= "checkout" value = "Proceed to Checkout"/>
+		</form>
+		
 </body>
 </html>

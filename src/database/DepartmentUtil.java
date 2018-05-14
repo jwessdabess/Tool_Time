@@ -108,7 +108,7 @@ public class DepartmentUtil {
         
         Product theProduct = new Product();
     	while (resultSet.next()){
-    		theProduct.setImage("departments/" + resultSet.getString("DEPARTMENT").toLowerCase() + "_images/" + resultSet.getString("IMAGE_NAME"));
+    		theProduct.setImagePath("departments/" + resultSet.getString("DEPARTMENT").toLowerCase() + "_images/" + resultSet.getString("IMAGE_NAME"));
     		theProduct.setCost(resultSet.getString("COST"));
     		theProduct.setDepartment(resultSet.getString("DEPARTMENT"));
     		theProduct.setDescription(resultSet.getString("DESCRIPTION"));

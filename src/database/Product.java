@@ -22,6 +22,7 @@ public class Product implements Serializable{
     private String department;
     private String category;
     private String imagePath;
+    private int quantity;
     
     public Product(){
         
@@ -135,11 +136,19 @@ public class Product implements Serializable{
     /**
      * @param image the image to set
      */
-    public void setImage(String imagePath) {
+    public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
-    
-    @Override
+
+    public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	@Override
     public boolean equals(Object o) {
     	if (this == o) {
     		return true;
