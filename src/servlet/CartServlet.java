@@ -47,18 +47,18 @@ public class CartServlet extends HttpServlet {
 		String url = "/cart.jsp";
 		//session object
         HttpSession session = request.getSession();
-		//User user = (User) session.getAttribute("results");
+		User user = (User) session.getAttribute("results");
 		
         //TEMPORARY USER
+        /*
 		User user = new User();
 		user.setFirstName("Mike");
 		user.setLastName("Wilkinson");
 		user.setEmail("ltmikewilkinson@gmail.com");
 		session.setAttribute("user", user);
-		
+		*/
 		Cart cart = (Cart) session.getAttribute("cart");
 		String productSKU = request.getParameter("SKU");
-		String viewCart = request.getParameter("viewCart");
 		String addToCart = request.getParameter("addToCart");
 		String removeFromCart = request.getParameter("removeFromCart");
 		int numItems;
@@ -66,37 +66,36 @@ public class CartServlet extends HttpServlet {
 		
 		if (user == null) {
 			url = "/login.jsp";
-		}else {
-			
-			try {
-	            
-				Class.forName("com.mysql.jdbc.Driver");
-	            String dbUrl = "jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3230335";
-	            String dbUserName = "sql3230335";
-	            String dbPassWord = "gvitcsZz4d";
-	            Connection connection = DriverManager.getConnection(dbUrl, dbUserName, dbPassWord);
-	        
-	            if (cart == null) {
-	            	cart = new Cart();
-	            }
-	            if (addToCart != null) {
-	            	cart.addCartItem(DepartmentUtil.getProductBySKU(connection, productSKU));
-	            }
-	            if (removeFromCart != null) {
-	            	cart.removeCartItem(DepartmentUtil.getProductBySKU(connection, productSKU));
-	            }
-	            
-				} catch (SQLException | ClassNotFoundException e) {
-					e.printStackTrace();
-				}
-				numItems = cart.getCartItems().size();
-				double totalCost = CartUtil.getCartTotal(cart);
-				session.setAttribute("cart", cart);
-				session.setAttribute("cartItems",cart.getCartItems());
-				session.setAttribute("numItems",numItems);
-				session.setAttribute("totalCost", totalCost);
+		}
+
+		try {
+
+			Class.forName("com.mysql.jdbc.Driver");
+			String dbUrl = "jdbc:mysql://sql3.freemysqlhosting.net:3306/sql3230335";
+			String dbUserName = "sql3230335";
+			String dbPassWord = "gvitcsZz4d";
+			Connection connection = DriverManager.getConnection(dbUrl, dbUserName, dbPassWord);
+
+			if (cart == null) {
+				cart = new Cart();
 			}
-			
+			if (addToCart != null) {
+				cart.addCartItem(DepartmentUtil.getProductBySKU(connection, productSKU));
+			}
+			if (removeFromCart != null) {
+				cart.removeCartItem(DepartmentUtil.getProductBySKU(connection, productSKU));
+			}
+
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		numItems = cart.getCartItems().size();
+		double totalCost = CartUtil.getCartTotal(cart);
+		session.setAttribute("cart", cart);
+		session.setAttribute("cartItems", cart.getCartItems());
+		session.setAttribute("numItems", numItems);
+		session.setAttribute("totalCost", totalCost);
+
 		getServletContext().getRequestDispatcher(url).forward(request, response);
 	}
 

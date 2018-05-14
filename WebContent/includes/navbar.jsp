@@ -33,7 +33,7 @@
 				</div>
 			</div>
 			<div style="float: right;text-align:right">
-			  <a href="CartServlet?viewCart=true"><i class="material-icons" style="font-size:48px;color:peru">shopping_cart</i> </a>
+			  <a href="CartServlet"><i class="material-icons" style="font-size:48px;color:peru">shopping_cart</i> </a>
 			<b><c:if test="${empty numItems}">
 			   0 item(s)
 			</c:if>
