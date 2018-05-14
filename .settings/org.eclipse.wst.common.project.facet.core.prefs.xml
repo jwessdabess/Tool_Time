@@ -1,4 +1,12 @@
 <root>
+<<<<<<< HEAD
+  <facet id="jst.jsf">
+    <node name="libprov">
+      <attribute name="provider-id" value="jsf-user-library-provider"/>
+    </node>
+  </facet>
+=======
+>>>>>>> branch 'Mike_Branch' of https://github.com/jwessdabess/Tool_Time.git
   <facet id="jpt.jpa">
     <node name="libprov">
       <attribute name="provider-id" value="jpa-user-library-provider"/>

@@ -1,11 +1,5 @@
-<%-- 
-    Document   : electrical
-    Created on : Apr 28, 2018, 12:58:22 PM
-    Author     : MikeWilkinson
---%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<%--<c:import url="/web/includes/header.html" /> --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

@@ -12,6 +12,23 @@ and open the template in the editor.
     box-sizing: border-box;
 }
 
+
+
+table { 
+	border-collapse: collapse;
+    width: 50%
+}
+th{
+	background-color: cadetblue;
+    color: white;
+}
+th,td{
+	padding: 15px;
+	border: 1px solid black;
+	text-align: center;
+}
+
+
 /* Center website */
 .main {
     max-width: 1000px;
@@ -22,8 +39,14 @@ h1 {
     font-size: 50px;
     word-break: break-all;
     font-family: Arial, Helvetica, sans-serif;
-   
+    color: blue;
 }
+
+body { 
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 85%;
+}
+
 
 .row {
     margin: 8px -16px;
@@ -87,14 +110,21 @@ h1 {
 .button {
   display: inline-block;
   border-radius: 4px;
-  background-color: #f4511e;
+  background-color: peru;
   border: none;
   color: #FFFFFF;
   text-align: center;
-  font-size: 28px;
+  font-size: 16px;
   padding: 20px;
   width: 200px;
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
+}
+
+
+.deleteButton{
+    font-size: 100%;
+    border: 2px solid #3ABDF2;
+    border-radius: 5px;
 }

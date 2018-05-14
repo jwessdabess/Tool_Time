@@ -32,13 +32,14 @@
 					<a href="#">Claim Center</a> 
 				</div>
 			</div>
-			<div align="right">
-			  <a href="CartServlet?viewCart=true"><i class="material-icons" style="font-size:48px;color:cadetblue">shopping_cart</i> </a>
-			<c:if test="${empty numItems}">
-			  0 items
+			<div style="float: right;text-align:right">
+			  <a href="CartServlet"><i class="material-icons" style="font-size:48px;color:peru">shopping_cart</i> </a>
+			<b><c:if test="${empty numItems}">
+			   0 item(s)
 			</c:if>
 			<c:if test="${not empty numItems}">
-			${numItems} items
+			${numItems} item(s)
 			</c:if>
+			</b>
 			</div>
 		</div>
