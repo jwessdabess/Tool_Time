@@ -49,24 +49,22 @@ public class CartServlet extends HttpServlet {
         HttpSession session = request.getSession();
 		User user = (User) session.getAttribute("results");
 		
-        //TEMPORARY USER
-        /*
-		User user = new User();
-		user.setFirstName("Mike");
-		user.setLastName("Wilkinson");
-		user.setEmail("ltmikewilkinson@gmail.com");
-		session.setAttribute("user", user);
-		*/
+        
 		Cart cart = (Cart) session.getAttribute("cart");
 		String productSKU = request.getParameter("SKU");
 		String addToCart = request.getParameter("addToCart");
 		String removeFromCart = request.getParameter("removeFromCart");
+		String checkout = request.getParameter("checkout");
 		int numItems;
 		
+		if (checkout != null) {
+			url = "/payment.jsp";
+		}
 		
 		if (user == null) {
 			url = "/login.jsp";
 		}
+		
 
 		try {
 
